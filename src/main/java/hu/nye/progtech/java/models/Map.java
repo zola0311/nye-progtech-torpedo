@@ -7,9 +7,9 @@ public class Map {
 
     private final int numberOfRows;
     private final int numberOfColumns;
-    private final int[][] map;
+    private final char[][] map;
 
-    public Map(int numberOfRows, int numberOfColumns, int[][] map) {
+    public Map(int numberOfRows, int numberOfColumns, char[][] map) {
         this.numberOfRows = numberOfRows;
         this.numberOfColumns = numberOfColumns;
         this.map = deepCopy(map);
@@ -23,7 +23,7 @@ public class Map {
         return numberOfColumns;
     }
 
-    public int[][] getMap() {
+    public char[][] getMap() {
         return deepCopy(map);
     }
 
