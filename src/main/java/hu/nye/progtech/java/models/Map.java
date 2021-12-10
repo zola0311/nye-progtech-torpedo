@@ -24,7 +24,7 @@ public class Map {
     }
 
     public char[][] getMap() {
-        return deepCopy(map);
+        return deepCopy(this.map);
     }
 
     @Override
@@ -35,9 +35,9 @@ public class Map {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        Map mapVO = (Map) o;
-        return numberOfRows == mapVO.numberOfRows && numberOfColumns == mapVO.numberOfColumns
-                && Arrays.deepEquals(map, mapVO.map);
+        Map currentMap = (Map) o;
+        return numberOfRows == currentMap.numberOfRows && numberOfColumns == currentMap.numberOfColumns
+                && Arrays.deepEquals(map, currentMap.map);
     }
 
     @Override
@@ -49,10 +49,11 @@ public class Map {
 
     @Override
     public String toString() {
-        return "MapVO{" +
+        return "BaseTable{" +
                 "numberOfRows=" + numberOfRows +
                 ", numberOfColumns=" + numberOfColumns +
-                ", map=" + Arrays.toString(map) +
+                ", map=" + "\n" + Arrays.deepToString(map).replace("],","\n").replace(","," " )
+                .replaceAll("[\\[\\]]", " ")+
                 '}';
     }
 

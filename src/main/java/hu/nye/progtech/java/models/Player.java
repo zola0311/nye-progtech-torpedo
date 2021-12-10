@@ -4,12 +4,12 @@ public class Player {
 
     private String playerName;
     private int playerWins;
-    private int playerHighestScore;
+    private int playerPlayedGames;
 
-    public Player(String playerName, int playerWins, int playerHighestScore) {
+    public Player(String playerName, int playerWins, int playerPlayedGames) {
         this.playerName = playerName;
         this.playerWins = playerWins;
-        this.playerHighestScore = playerHighestScore;
+        this.playerPlayedGames = playerPlayedGames;
     }
 
     public String getPlayerName() {
@@ -20,8 +20,8 @@ public class Player {
         return playerWins;
     }
 
-    public int getPlayerHighestScore() {
-        return playerHighestScore;
+    public int getPlayerPlayedGames() {
+        return playerPlayedGames;
     }
 
     public void setPlayerName(String newPlayerName) {
@@ -32,7 +32,16 @@ public class Player {
         this.playerWins = newPlayerWins;
     }
 
-    public void setPlayerHighestScore(int newHighestScore) {
-        this.playerHighestScore = newHighestScore;
+    public void setPlayerPlayedGames(int newPlayedGames) {
+        this.playerPlayedGames = newPlayedGames;
+    }
+
+    @Override
+    public String toString() {
+        return "Player{" +
+                "playerName='" + this.playerName + '\'' +
+                ", playerWins=" + this.playerWins +
+                ", playerPlayedGames=" + this.playerPlayedGames +
+                '}';
     }
 }
