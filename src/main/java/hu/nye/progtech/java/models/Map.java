@@ -52,12 +52,12 @@ public class Map {
         return "BaseTable{" +
                 "numberOfRows=" + numberOfRows +
                 ", numberOfColumns=" + numberOfColumns +
-                ", map=" + "\n" + Arrays.deepToString(map).replace("],","\n").replace(","," " )
-                .replaceAll("[\\[\\]]", " ")+
+                ", map=" + "\n" + Arrays.deepToString(map).replace("], ", "\n").replace(", ", " ")
+                .replaceAll("[\\[\\]]", " ") +
                 '}';
     }
 
-    private char[][] deepCopy(char[][] map){
+    private char[][] deepCopy(char[][] map) {
         char[][] result = new char[map.length][];
 
         for (int i = 0; i < map.length; i++) {

@@ -24,7 +24,7 @@ public class ApplicationConfiguration {
     }
 
     @Bean
-    public PlayerCreator playerCreator(UserInputReader userInputReader, PrintWrapper printWrapper){
+    public PlayerCreator playerCreator(UserInputReader userInputReader, PrintWrapper printWrapper) {
         return new PlayerCreator(userInputReader, printWrapper);
     }
 
@@ -34,7 +34,7 @@ public class ApplicationConfiguration {
     }
 
     @Bean
-    public GameState gameState(){
+    public GameState gameState() {
         return new GameState();
     }
 

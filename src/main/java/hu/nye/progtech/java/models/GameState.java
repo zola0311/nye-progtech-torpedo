@@ -10,6 +10,7 @@ public class GameState {
     public boolean isShouldExit() {
         return shouldExit;
     }
+
     public void setShouldExit(boolean shouldExit) {
         this.shouldExit = shouldExit;
     }

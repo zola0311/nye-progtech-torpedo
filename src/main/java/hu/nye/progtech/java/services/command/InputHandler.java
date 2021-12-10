@@ -16,7 +16,7 @@ public class InputHandler {
 
     /**
      * Handles an input through a list of {@link Command}s.
-     *
+     * <p>
      * Only the first applicable command will be run.
      *
      * @param input the input as a string to be handled

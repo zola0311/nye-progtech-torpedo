@@ -1,7 +1,7 @@
 package hu.nye.progtech.java.services;
 
 import hu.nye.progtech.java.models.Player;
-import hu.nye.progtech.java.persistence.impl.MSSQLPlayerRepository;
+import hu.nye.progtech.java.persistence.impl.MyQLPlayerRepository;
 import hu.nye.progtech.java.ui.PrintWrapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -30,22 +30,20 @@ public class PlayerCreator {
         try {
             player.setPlayerName(playerName);
             try {
-                MSSQLPlayerRepository playerRepository = new MSSQLPlayerRepository(player);
+                MyQLPlayerRepository playerRepository = new MyQLPlayerRepository(player);
 
                 int playerPlayedGamesInDatabase = playerRepository.getPlayer().getPlayerPlayedGames();
 
-                if(playerPlayedGamesInDatabase == 0) {
+                if (playerPlayedGamesInDatabase == 0) {
                     player.setPlayerPlayedGames(1);
                     playerRepository.createPlayer(player);
-                    LOGGER.info("Add a new player to the database.: "+ playerName);
-                }
-                else {
+                    LOGGER.info("Add a new player to the database.: " + playerName);
+                } else {
                     player.setPlayerPlayedGames(playerPlayedGamesInDatabase + 1);
                     playerRepository.updatePlayer(player);
                     LOGGER.info("Query and modify player information.: " + playerName);
                 }
-            }
-            catch (SQLException error) {
+            } catch (SQLException error) {
                 error.printStackTrace();
             }
         }

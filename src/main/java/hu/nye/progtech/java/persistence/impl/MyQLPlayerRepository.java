@@ -5,23 +5,21 @@ import hu.nye.progtech.java.persistence.PlayerRepository;
 
 import java.sql.*;
 
-public class MSSQLPlayerRepository implements PlayerRepository {
-
-    Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/progtechdatabase", "root", "");
+public class MyQLPlayerRepository implements PlayerRepository {
 
     private static final String INSERT_STATEMENT = "INSERT INTO players (playerName, playerWins, playerPlayedGames) VALUES (?, ?, ?);";
     private static final String SELECT_STATEMENT = "SELECT * FROM players Where playerName = ?;";
     private static final String UPDATE_STATEMENT = "UPDATE players SET playerWins = ?, playerPlayedGames = ? Where playerName = ?;";
+    Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/progtechdatabase", "root", "");
+    private final Player player;
 
-    private Player player;
-
-    public MSSQLPlayerRepository(Player player) throws SQLException {
+    public MyQLPlayerRepository(Player player) throws SQLException {
         this.player = player;
     }
 
     @Override
     public void createPlayer(Player player) {
-        try (PreparedStatement preparedStatement = connection.prepareStatement(INSERT_STATEMENT)){
+        try (PreparedStatement preparedStatement = connection.prepareStatement(INSERT_STATEMENT)) {
             preparedStatement.setString(1, player.getPlayerName());
             preparedStatement.setString(2, String.valueOf(player.getPlayerWins()));
             preparedStatement.setString(3, String.valueOf(player.getPlayerPlayedGames()));
@@ -34,7 +32,7 @@ public class MSSQLPlayerRepository implements PlayerRepository {
 
     @Override
     public void updatePlayer(Player player) {
-        try (PreparedStatement preparedStatement = connection.prepareStatement(UPDATE_STATEMENT)){
+        try (PreparedStatement preparedStatement = connection.prepareStatement(UPDATE_STATEMENT)) {
             preparedStatement.setString(3, player.getPlayerName());
             preparedStatement.setString(1, String.valueOf(player.getPlayerWins()));
             preparedStatement.setString(2, String.valueOf(player.getPlayerPlayedGames()));
@@ -47,10 +45,10 @@ public class MSSQLPlayerRepository implements PlayerRepository {
 
     @Override
     public Player getPlayer() {
-        try (PreparedStatement preparedStatement = connection.prepareStatement(SELECT_STATEMENT)){
+        try (PreparedStatement preparedStatement = connection.prepareStatement(SELECT_STATEMENT)) {
             preparedStatement.setString(1, player.getPlayerName());
             ResultSet resultSet = preparedStatement.executeQuery();
-            if(resultSet.next()){
+            if (resultSet.next()) {
                 player.setPLayerWins(resultSet.getInt("PlayerWins"));
                 player.setPlayerPlayedGames(resultSet.getInt("PlayerPlayedGames"));
             }

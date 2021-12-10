@@ -35,6 +35,5 @@ public class CShipCommand implements Command {
         int columnIndex = Integer.parseInt(parts[2]);
 
 
-
     }
 }

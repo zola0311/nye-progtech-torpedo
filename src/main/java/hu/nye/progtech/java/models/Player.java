@@ -16,6 +16,10 @@ public class Player {
         return playerName;
     }
 
+    public void setPlayerName(String newPlayerName) {
+        this.playerName = newPlayerName;
+    }
+
     public int getPlayerWins() {
         return playerWins;
     }
@@ -24,16 +28,12 @@ public class Player {
         return playerPlayedGames;
     }
 
-    public void setPlayerName(String newPlayerName) {
-        this.playerName = newPlayerName;
+    public void setPlayerPlayedGames(int newPlayedGames) {
+        this.playerPlayedGames = newPlayedGames;
     }
 
     public void setPLayerWins(int newPlayerWins) {
         this.playerWins = newPlayerWins;
-    }
-
-    public void setPlayerPlayedGames(int newPlayedGames) {
-        this.playerPlayedGames = newPlayedGames;
     }
 
     @Override

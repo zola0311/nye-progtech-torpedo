@@ -17,7 +17,7 @@ public class GameStepPerformer {
 
     /**
      * Performs a game step.
-     *
+     * <p>
      * A game step consists of taking the input from the user, then handling
      * the input.
      */
